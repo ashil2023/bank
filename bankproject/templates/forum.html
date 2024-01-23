@@ -1,0 +1,333 @@
+{% load static %}
+{% block content %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Tooplate's Little Fashion - Sign Up Page</title>
+
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="{% static 'https://fonts.googleapis.com' %}">
+
+        <link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}" crossorigin>
+
+        <link href="{% static 'https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap' %}" rel="stylesheet">
+
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-icons.css' %}" rel="stylesheet">
+
+        <link rel="stylesheet" href="{% static 'css/slick.css' %}"/>
+
+        <link href="{% static 'css/tooplate-little-fashion.css' %}" rel="stylesheet">
+        
+<!--
+
+Tooplate 2127 Little Fashion
+
+https://www.tooplate.com/view/2127-little-fashion
+
+-->
+    </head>
+    
+    <body>
+    <script>
+ function populateDistricts() {
+        var stateSelect = document.getElementById("state");
+        var districtSelect = document.getElementById("district");
+ 
+        // Clear existing options
+        districtSelect.innerHTML = '<option value="select">Select</option>';
+ 
+        // Get selected state
+        var selectedState = stateSelect.value;
+ 
+        // Populate districts based on the selected state
+        if (selectedState === "Kozhikode") {
+            // Add districts for State 1
+            addDistrictOption("Feroke");
+            addDistrictOption("Mukkom");
+             addDistrictOption("Vadakara");
+            // Add more districts as needed
+        } else if (selectedState === "Ernakulam") {
+            // Add districts for State 2
+            addDistrictOption("Aluva");
+            addDistrictOption("Edappalli");
+            addDistrictOption("Kakkanad");
+            
+            // Add more districts as needed
+        }
+        else if (selectedState === "Trivandrum") {
+            // Add districts for State 2
+            addDistrictOption("Pothenkode");
+            addDistrictOption("Kanakakunnu");
+            addDistrictOption("Kazhakkotam");
+            
+            // Add more districts as needed
+        }
+        // Add more conditions for other states if necessary
+    }
+ 
+    function addDistrictOption(districtName) {
+        var districtSelect = document.getElementById("district");
+        var option = document.createElement("option");
+        option.value = districtName;
+        option.text = districtName;
+        districtSelect.add(option);
+    }
+</script>
+
+
+        <section class="preloader">
+            <div class="spinner">
+                <span class="sk-inner-circle"></span>
+            </div>
+        </section>
+    
+        <main>
+
+            <section class="sign-in-form section-padding">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 mx-auto col-12">
+                            {% for msg in messages %}
+                            <h6>{{msg}}</h6>
+                            {% endfor %}
+
+
+                            <h4 class="hero-title text-center mb-5">Application Forum</h4>
+
+
+
+
+
+                            <div class="row">
+                                <div class="col-lg-8 col-11 mx-auto">
+                                    <form action="{% url 'forum' %}" method="post">
+                                        {% csrf_token %}
+
+<div>
+  <label for="address">Enter Your  Number:</label>
+    <br>
+                                        <div class="form-floating">
+                                            <input type="text" name="name" id="name"  class="form-control" placeholder="Username">
+        <br>                                          <label for="Name"> Name</label>
+<div>
+  <label for="address">Enter DOB:</label>
+    <br>
+                                        </div>
+                                        <div class="form-floating my-4">
+                                            <input type="date" name="dob" id="dob"  class="form-control" placeholder="Username required">
+                                              <label>Date of Birth</label>
+
+                                        </div>
+<div>
+  <label for="address">Enter Age :</label>
+    <br>
+                                        <div class="form-floating my-4">
+                                            <input type="number" name="age" id="age"  class="form-control" placeholder="age" required>
+
+                                            <label>Age </label>
+
+                                        </div>
+
+                                        <div class="form-floating my-2">
+<div>
+  <label for="address">Select Gender:</label>
+    <br>
+                                             <div>
+                                         <input type="radio" id="male" name="gender" value="male">
+                                          <label for="male">Male</label>
+                                         <input type="radio" id="female" name="gender" value="female">
+                                         <label for="female">Female</label>
+                                             </div>
+    <br>
+                                            <div>
+  <label for="address">Enter Mobile Number:</label>
+                                                <br>
+
+                                             <!-- Text input field for mobile number -->
+                                            <div class="form-floating my-4">
+                                                <label for="phone">Mobile Number:</label>
+                                            <input type="tel" name="mobile" id="mobile"  class="form-control" placeholder="Mobile" required>
+                                            </div>
+<div>
+  <label for="address">Enter Phone Number:</label>
+</div>
+                                            <!-- Text input field for phone number -->
+                                            <div class="form-floating my-4">
+                                            <label for="phone">Phone Number:</label>
+                                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Mobile">
+
+                                            </div>
+                                            <div>
+  <label for="address">Enter E-mail : </label>
+</div>
+
+
+                                             <div class="form-floating my-4">
+                                            <label for="email">Email:</label>
+                                            <input type="email" id="email" name="email" class="form-control" placeholder="Email"required>
+                                                    </div>
+
+<div>
+  <label for="address">Address:</label>
+</div>
+
+                                            <!-- Textarea for address -->
+                                            <div class="form-floating my-4">
+                                            <label for="address">Address:</label>
+                                            <textarea id="address" name="address" rows="4" class="form-control" placeholder="address"required></textarea>
+                                                </div>
+
+
+<div>
+  <label for="address">Select District:</label>
+</div>
+
+                                            <form>
+                                                 <div class="form-floating my-4" >
+
+
+                                                <select id="state" name="state" class="form-control" onchange="populateDistricts()">
+                                                <label for="district">Select District:</label>
+                                                    <option value="select" >Select</option>
+                                             <option value="Kozhikode">Kozhikode</option>
+                                            <option value="Ernakulam">Ernakulam</option>
+                                           <option value="Trivandrum">Trivandrum</option>
+<!-- Add more state options as needed -->
+                                               </select>
+
+                                            <br>
+
+<div>
+  <label for="address">Select Branch</label>
+</div>
+<br>
+                                             <select id="district"  class="form-control" name="district">
+                                             <option value="select">Select</option>
+                                             <!-- District options will be populated dynamically based on the selected state -->
+                                             </select>
+                                                 </div>
+                                            </form>
+
+
+
+<div>
+  <label for="address">Select Account Type</label>
+</div>
+
+
+
+                                            <div class="form-floating my-4">
+                                                <select id="Account1" name="Account1" class="form-control" placeholder="Accout Type" required>
+
+                                                    <option value="Current A/c">Current A/c</option>
+                                                    <option value="Saving A/c">Saving  A/c</option>
+                                                </select>
+                                             </div>
+
+                                               <div>
+  <label for="address">Select Payment </label>
+</div>
+
+                                            <div class="form-control mt-4 mb-3">
+                                                <input type="checkbox" id="Debit" name="Debit" value="yes" >
+                                                <label for="Debit">Debit</label>
+
+
+
+                                                    <input type="checkbox" id="Credit" name="Credit" value="yes" >
+                                                   <label for="Credit">Credit</label>
+
+
+
+                                                        <input type="checkbox" id="Chequ" name="Cheque" value="yes" >
+                                                        <label for="Credit">Cheque book</label>
+
+                                            </div>
+
+
+                                                 <button type="submit"  class="btn custom-btn form-control mt-4 mb-3">
+                                                Submit
+                                                 </button>
+
+                                                <p class="text-center"> Are you Back to <a href="{% url 'home' %}">Home</a></p>
+                                </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-10 me-auto mb-4">
+                        <h4 class="text-white mb-3"><a href="index.html">Little</a> Fashion</h4>
+                        <p class="copyright-text text-muted mt-lg-5 mb-4 mb-lg-0">Copyright © 2022 <strong>Little Fashion</strong></p>
+                        <br>
+                        <p class="copyright-text">Designed by <a href="https://www.tooplate.com/" target="_blank">Tooplate</a></p>
+                    </div>
+
+                    <div class="col-lg-5 col-8">
+                        <h5 class="text-white mb-3">Sitemap</h5>
+
+                        <ul class="footer-menu d-flex flex-wrap">
+                            <li class="footer-menu-item"><a href="about.html" class="footer-menu-link">Story</a></li>
+
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Products</a></li>
+
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Privacy policy</a></li>
+
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">FAQs</a></li>
+
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Contact</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-4">
+                        <h5 class="text-white mb-3">Social</h5>
+
+                        <ul class="social-icon">
+
+                            <li><a href="#" class="social-icon-link bi-youtube"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-whatsapp"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-instagram"></a></li>
+
+                            <li><a href="#" class="social-icon-link bi-skype"></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+        <!-- JAVASCRIPT FILES -->
+       <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'js/Headroom.js' %}"></script>
+        <script src="{% static 'js/jQuery.headroom.js' %}"></script>
+        <script src="{% static 'js/slick.min.js' %}"></script>
+        <script src="{% static 'js/custom.js' %}"></script>
+
+    </body>
+</html>
+{% endblock %}
